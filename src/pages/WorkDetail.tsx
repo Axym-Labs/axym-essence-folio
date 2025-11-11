@@ -44,12 +44,6 @@ const WorkDetail = () => {
           </Link>
 
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${categoryColor}`}>
-                {item.category}
-              </span>
-            </div>
-
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
               {item.title}
             </h1>
@@ -65,9 +59,9 @@ const WorkDetail = () => {
                   return (
                     <span
                       key={idx}
-                      className="inline-flex flex-col items-center gap-3 px-6 py-5 text-sm font-medium bg-transparent text-white border border-white rounded-lg"
+                      className="inline-flex items-center gap-4 px-8 py-7 text-base font-medium bg-transparent text-white border border-white rounded-lg"
                     >
-                      <Icon className="w-8 h-8" />
+                      <Icon className="w-10 h-10 flex-shrink-0" />
                       {text}
                     </span>
                   );
@@ -96,8 +90,8 @@ const WorkDetail = () => {
       )}
 
       {/* Content Canvas */}
-      <main className="py-24 px-6 lg:px-12">
-        <article className="w-full bg-canvas text-canvas-foreground rounded-lg p-12 md:p-20 lg:p-32 prose prose-lg prose-neutral max-w-none">
+      <main className="py-24">
+        <article className="w-full bg-canvas text-canvas-foreground p-12 md:p-20 lg:p-32 prose prose-lg prose-neutral max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight]}
@@ -126,8 +120,8 @@ const WorkDetail = () => {
 
       {/* What's Next Section */}
       {item.links && item.links.length > 0 && (
-        <section className="py-24 px-6 lg:px-8 border-t border-foreground/10">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-24 border-t border-foreground/10">
+          <div className="px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               <h2 className="text-3xl font-bold text-foreground">
                 What's Next

@@ -12,18 +12,22 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 pt-16 overflow-hidden">
-      {/* Background animation */}
+      {/* Background image */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <img 
+          src="/work/real-time-inference.jpg" 
+          alt="Background" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background"></div>
       </div>
       
       <div className="relative max-w-4xl text-center space-y-8">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-          We build machine-learning systems and explore new ML paradigms.
+          We build and explore machine-learning systems and ideas
         </h1>
         
-        <p className="text-base md:text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-sm md:text-base text-foreground/70 max-w-3xl mx-auto leading-relaxed">
           Student-run organization producing prototypes, reproducible demos, and experimental essays.
         </p>
         

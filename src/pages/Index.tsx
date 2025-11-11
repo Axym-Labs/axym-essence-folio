@@ -35,8 +35,8 @@ const Index = () => {
       </div>
 
       {/* About Section */}
-      <section id="about" className="py-32 px-6 lg:px-8 border-t border-foreground/10">
-        <div className="max-w-4xl mx-auto">
+      <section id="about" className="py-32 border-t border-foreground/10">
+        <div className="px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-16">
             About
           </h2>
