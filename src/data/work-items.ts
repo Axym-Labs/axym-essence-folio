@@ -1,4 +1,4 @@
-import matter from "gray-matter";
+import fm from "front-matter";
 
 export interface WorkItem {
   slug: string;
@@ -25,23 +25,23 @@ import metaLearningContent from "../content/work/meta-learning-thoughts.md?raw";
 
 // Parse markdown files with frontmatter
 const parseWorkItem = (markdownContent: string): WorkItem => {
-  const { data, content } = matter(markdownContent);
+  const { attributes, body } = fm<any>(markdownContent);
   return {
-    slug: data.slug,
-    title: data.title,
-    category: data.category,
-    summary: data.summary,
-    cover_image: data.cover_image,
-    cover_animated: data.cover_animated,
-    cover_poster: data.cover_poster,
-    use_cover_as_card_bg: data.use_cover_as_card_bg,
-    external_url: data.external_url,
-    main_points: data.main_points,
-    draft: data.draft,
-    date: data.date,
-    rank: data.rank,
-    content,
-    links: data.links,
+    slug: attributes.slug,
+    title: attributes.title,
+    category: attributes.category,
+    summary: attributes.summary,
+    cover_image: attributes.cover_image,
+    cover_animated: attributes.cover_animated,
+    cover_poster: attributes.cover_poster,
+    use_cover_as_card_bg: attributes.use_cover_as_card_bg,
+    external_url: attributes.external_url,
+    main_points: attributes.main_points,
+    draft: attributes.draft,
+    date: attributes.date,
+    rank: attributes.rank,
+    content: body,
+    links: attributes.links,
   };
 };
 
