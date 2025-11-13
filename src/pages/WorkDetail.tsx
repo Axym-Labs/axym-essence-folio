@@ -24,7 +24,10 @@ const iconMap: Record<string, any> = {
 
 const WorkDetail = () => {
   const { slug } = useParams();
+
   const [workItems, setWorkItems] = useState<WorkItem[]>([]);
+  const [coverSrc, setCoverSrc] = useState<string | null>(null);
+  const [animatedLoaded, setAnimatedLoaded] = useState(false);
 
   useEffect(() => {
     getWorkItems().then(setWorkItems);
@@ -32,24 +35,15 @@ const WorkDetail = () => {
 
   const item = workItems.find((w) => w.slug === slug);
 
-  if (!item) {
-    return <Navigate to="/" replace />;
-  }
-
-  const categoryColor = {
-    product: "bg-accent/10 text-accent",
-    research: "bg-foreground/10 text-foreground",
-    idea: "bg-foreground/10 text-foreground/80",
-  }[item.category] || "bg-foreground/10 text-foreground";
-
-  const [coverSrc, setCoverSrc] = useState(
-    item.cover_animated ? item.cover_poster : item.cover_image
-  );
-  const [animatedLoaded, setAnimatedLoaded] = useState(false);
-
+  // Initialize coverSrc when item becomes available
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    
+    if (!item) return;
+
+    setCoverSrc(item.cover_animated ? item.cover_poster : item.cover_image);
+
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     if (item.cover_animated && !prefersReducedMotion && item.cover_image) {
       const img = new Image();
       img.src = item.cover_image;
@@ -58,7 +52,18 @@ const WorkDetail = () => {
         setCoverSrc(item.cover_image);
       };
     }
-  }, [item.cover_animated, item.cover_image]);
+  }, [item]);
+
+  if (!item) {
+    return <div className="min-h-screen bg-background" />;
+  }
+
+  const categoryColor =
+    {
+      product: "bg-accent/10 text-accent",
+      research: "bg-foreground/10 text-foreground",
+      idea: "bg-foreground/10 text-foreground/80",
+    }[item.category] || "bg-foreground/10 text-foreground";
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,18 +113,24 @@ const WorkDetail = () => {
 
       {/* External URL Banner */}
       {item.external_url && (
-        <div className="bg-accent/10 border-b border-accent/20 py-4 px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="py-4 px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto flex justify-end">
             <a
               href={item.external_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-accent hover:underline font-medium"
+              className="inline-flex items-center gap-2 text-accent hover:underline font-bold text-lg border border-accent p-5 rounded-full hover:bg-accent/20 transition-colors duration-100 ease-in-out"
             >
+              Open link
               <ExternalLink className="w-4 h-4" />
-              View external project
             </a>
           </div>
+        </div>
+      )}
+
+      {item.external_url && (!item.cover_image || !item.show_cover_in_detail) && (
+        <div className="pb-24 lg:pb-36">
+
         </div>
       )}
 
