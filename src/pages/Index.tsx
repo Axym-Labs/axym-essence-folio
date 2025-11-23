@@ -37,7 +37,7 @@ const Index = () => {
         <WorkList
           items={workItems}
           category="idea"
-          title="Ideas"
+          title="Ideas & Notes"
           sectionId="ideas"
         />
       </div>

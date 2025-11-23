@@ -27,8 +27,8 @@ const Hero = () => {
           We build and explore machine-learning systems and ideas
         </h1>
         
-        <p className="text-sm md:text-base text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-          Student-run organization conducting research, producing prototypes and sharing ideas.
+        <p className="text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+          Small-scale student organization conducting research, producing prototypes and sharing ideas.
         </p>
       </div>
     </section>
