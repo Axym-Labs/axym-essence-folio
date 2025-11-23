@@ -28,7 +28,7 @@ const Hero = () => {
         </h1>
         
         <p className="text-sm md:text-base text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-          Student-run organization producing prototypes, reproducible demos, and experimental essays.
+          Student-run organization producing research, demos, and experimental essays.
         </p>
       </div>
     </section>

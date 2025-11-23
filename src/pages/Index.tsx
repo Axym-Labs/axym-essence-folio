@@ -51,10 +51,9 @@ const Index = () => {
           
           <div className="prose prose-lg">
             <p className="text-lg text-foreground leading-relaxed !text-gray-200">
-              Axym Labs is a student-run organization that shares code, prototypes, and ideas. 
-              We focus on proof-of-concept work and open-ended experiments in underexplored areas of 
-              machine learning and related fields. We welcome collaborations 
-              and follow-up projects. For inquiries:{" "}
+              Axym Labs on research, proof-of-concept work and open-ended experiments in underexplored areas of machine learning and related fields. 
+              We share a collection of ML experiments, notes and code for reproduction.
+              We welcome collaborations and follow-up projects. For inquiries write an email to:{" "}
               <a href="mailto:contact@axym.org" className="hover:text-accent underline">
                 contact@axym.org
               </a>
